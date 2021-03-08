@@ -10,8 +10,8 @@ describe("Bowling game", ()=> {
             bowling.roll(pins)
         }
     }
-    function makeSpare() {
-       return rolls(5, 2)
+    function makeSpare(pins: number, times:number) {
+       return rolls(pins, times)
     }
     it('all gutters', ()=> {
         rolls(0, 20);
@@ -22,12 +22,12 @@ describe("Bowling game", ()=> {
         expect(bowling.getScore()).toBe(20)
     })
     it('should make a spare and gutters', () => {
-       makeSpare()
+       makeSpare(5, 2)
        rolls(0, 18);
        expect(bowling.getScore()).toBe(10)
     })
     it('should spare and knock downs some pins', () => {
-        makeSpare()
+        makeSpare(5, 2)
         rolls(3, 18)
         expect(bowling.getScore()).toBe(67)
     })
